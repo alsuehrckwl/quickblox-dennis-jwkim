@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     public recorder: any = null;
 
     public stompClient: any = null;
-    
+
     public socket: WebSocket = null;
 
     constructor( private service: ClientService ) {
@@ -52,7 +52,6 @@ export class AppComponent implements OnInit {
 
 
     ngOnInit() {
-        
     }
 
     sendMsg() {
@@ -213,7 +212,6 @@ export class AppComponent implements OnInit {
     acceptCall() {
         console.log( 'accept call...' );
         this.connectWS();
-        
 
         console.log( this.currentSession );
 
@@ -236,7 +234,7 @@ export class AppComponent implements OnInit {
 
                 // start recording
                 console.log( 'start recording...' );
-                
+
                 // record audio/webm
                 this.recorder = RecordRTC( stream, {
                     type: 'audio',
@@ -244,14 +242,14 @@ export class AppComponent implements OnInit {
                     mimeType: 'audio/webm'
 //                    timeSlice: 1000
                 } );
-                
+
                 // record 16khz wav
 //                this.recorder = RecordRTC(stream, {
 //                    type: 'audio',
 //                    recorderType: StereoAudioRecorder,
 //                    desiredSampRate: 16000,
 //                    numberOfAudioChannels: 1
-//                    
+//
 //                });
 
 
@@ -281,26 +279,26 @@ export class AppComponent implements OnInit {
 
         this.recorder.stopRecording(() => {
             const blob = this.recorder.getBlob();
-            
-            
+
+
             const reader = new FileReader();
             reader.addEventListener('loadend', () => {
                 const buffer = Buffer.from(reader.result);
                 console.log('buffer', buffer);
-                
+
                 this.socket.send(buffer);
                 this.socket.send('EOS');
             })
-            
-            
+
+
             reader.readAsArrayBuffer(blob);
-            
-            
+
+
 //            reader.readAsArrayBuffer( blob );
             //            reader.readAsBinaryString( blob );
             //            this.stompClient.send( "/app/hello", {}, blob );
 
-            
+
 //            const reader = new FileReader();
 //            let base64data;
 //            reader.readAsDataURL(blob);
@@ -309,8 +307,8 @@ export class AppComponent implements OnInit {
 //                this.stompClient.send('/app/hello', {}, base64data);
 //                console.log(base64data);
 //            }
-            
-            
+
+
             // download file
 //            const a = window.document.createElement('a');
 //            a.href = window.URL.createObjectURL(blob);
@@ -318,7 +316,7 @@ export class AppComponent implements OnInit {
 //            document.body.appendChild(a);
 //            a.click();
 //            document.body.removeChild(a);
-//            
+//
 //            console.log( "blob", blob );
         } );
     }
@@ -326,37 +324,37 @@ export class AppComponent implements OnInit {
     connectWS() {
         console.log( 'connect to WS ...' );
         const socketURI = 'ws://localhost:8000/gs-guide-websocket';
-        
+
         // using sockjs and stomp
-        
+
         //        const socket = new SockJS( 'http://localhost:8000/gs-guide-websocket' );
-        
-        
+
+
 //        const contentType = 'audio/x-raw,+layout=(string)interleaved,+rate=(int)16000,+format=(string)S16LE,+channels=(int)1';
 //        const socketURI = 'ws://211.192.34.12:8888/client/ws/speech';
-        
-        
+
+
 //        this.stompClient = Stomp.over( socket );
 //        this.stompClient.connect( {}, function( frame ) {
 //            console.log( "stomp connect ..." );
 //        } );
-        
+
         // without stomp and sockjs
         this.socket = new WebSocket( socketURI );
         this.socket.binaryType = 'arraybuffer';
-        
+
         this.socket.onopen = () => {
             console.log('connected to websocket ...');
         }
-        
+
         this.socket.onerror = (e) => {
             console.log('websocket error', e);
         }
-        
+
         this.socket.onmessage = (e) => {
             console.log('received message', e.data);
         }
-        
+
         this.socket.onclose = () => {
             console.log('closed websocket');
         }
