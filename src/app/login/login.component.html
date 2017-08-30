@@ -1,0 +1,35 @@
+<div class="login-page">
+
+	<nav class="navbar navbar-light">
+    <div class="row">
+      <a class="navbar-brand navbar-logo" href="#">
+        <img src="/assets/images/logo.png" alt="logo">
+      </a>
+      <div class="nav-line"></div>
+      <a class="navbar-brand navbar-logo2" href="#">
+        <img src="/assets/images/myAssistant.png" alt="logo">
+      </a>
+    </div>
+  </nav>
+
+  <aside>
+    <div class="left-text">
+      <h1>Experience<br>the new digital era</h1>
+    </div>
+    <div class="right-login">
+      <form role="form">
+          <div class="form-content">
+              <div class="form-group">
+                  <input type="text" ng-model="name" class="form-control input-underline" id="" placeholder="UID">
+              </div>
+
+              <div class="form-group">
+                  <input type="password" class="form-control input-underline" id="" placeholder="Password">
+              </div>
+          </div>
+          <a class="btn login-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> CONTINUE </a>
+      </form>
+    </div>
+  </aside>
+  
+</div>

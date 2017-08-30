@@ -7,16 +7,23 @@ import { ClientlistComponent } from './clientlist/clientlist.component';
 
 import { ClientService } from './service/client.service';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    ClientlistComponent
+    ClientlistComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [ClientService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
