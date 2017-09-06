@@ -6,7 +6,7 @@ import { Client } from '../model/client.model';
 @Component( {
     selector: 'app-clientlist',
     templateUrl: './clientlist.component.html',
-    styleUrls: ['./clientlist.component.css']
+    styleUrls: ['./clientlist.component.scss']
 } )
 export class ClientlistComponent implements OnInit, OnDestroy {
     subscription: Subscription;

@@ -27,7 +27,10 @@
                   <input type="password" class="form-control input-underline" id="" placeholder="Password">
               </div>
           </div>
-          <a class="btn login-btn" [routerLink]="['/dashboard']" (click)="onLoggedin()"> CONTINUE </a>
+          <a class="forgot"><p>FORGOT LOGIN? ></p></a>
+          <a class="btn login-btn" style="margin-right: 16px;" [routerLink]="['/notice']"> CONTINUE </a>
+          <a class="btn login-btn" style="margin-right: 16px;" (click)="login('Tester','test1234')"> Tester </a>
+          <a class="btn login-btn" (click)="login('SecondTester','test1234')"> SecondTester </a>
       </form>
     </div>
   </aside>

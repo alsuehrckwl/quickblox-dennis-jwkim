@@ -19,8 +19,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 42px;
-  padding: 1px 0px;
+  height: 60px;
+  padding: 4px 0px;
   background-color: $white;
 }
 
@@ -31,7 +31,6 @@
 
 .navbar-brand {
   display: inline-block;
-  margin-right: $navbar-padding-x;
   font-size: $font-size-lg;
   line-height: inherit;
   white-space: nowrap;

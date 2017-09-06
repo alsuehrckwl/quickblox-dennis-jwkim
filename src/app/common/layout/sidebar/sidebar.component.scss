@@ -1,0 +1,110 @@
+$side-color: #FFF;
+
+.sidebar{
+    border-radius: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 335px;
+    width: 335px;
+    margin-left: -335px;
+    border: none;
+    border-right: 1px solid #D9D9D9;
+    border-radius: 0;
+    overflow-y: auto;
+    background-color: $side-color;
+    bottom: 0;
+    overflow-x: hidden;
+    // padding-bottom: 40px;
+    -webkit-transition: all 0.2s ease-in-out;
+       -moz-transition: all 0.2s ease-in-out;
+        -ms-transition: all 0.2s ease-in-out;
+         -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+
+    .side-logo {
+        display: block;
+        margin-bottom: 2.5rem;
+        .side-logo-box {
+            img {
+                width: 151px;
+                margin-left: 50px;
+                margin-top: 26px;
+            }
+        }
+    }
+
+    .list-group {
+        
+        a.list-group-item {
+            background: $side-color;
+            border: 0;
+            border-radius: 0;
+            color: #333333;
+            text-decoration: none;
+            .list-box {
+                display: flex; 
+                justify-content: space-between;
+                .user-icon {
+                    //flex-grow: 1;
+                    padding: 5px;
+                    img {
+                        width: 52px;
+                    }
+                }
+                .user-box {
+                    //flex-grow: 1;
+                    margin-left: 30px;
+                    margin-top: 8px;
+                    width: 180px;
+                    .user-name {
+                        font-size: 18px;
+                        font-weight: 600;
+                    }
+                    .user-portfolio {
+                        font-size: 13px;
+                        font-weight: 100;
+                    }
+                    p {
+                        margin-bottom: 0;
+                    }
+                }
+                .user-badge {
+                    //flex-grow: 1;
+                    margin-top: 15px;
+                    .badge-user {
+                        background-color: #6EBAAE;
+                        padding: 5px 7px;
+                    }
+
+                }
+            }
+        }
+        a:hover {
+            background: #F7F7F7;
+            color: #333333;
+        }
+        a.router-link-active {
+            background: #F7F7F7;
+            color: #333333;
+        }
+
+        .list-group-bottom {
+            .list-group-bottom-border {
+                border-bottom: 1px solid #F7F7F7;
+                width: 80%;
+                height: 2px;
+                margin-left: 10%;
+            }
+        }
+        
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    .sidebar {
+        top: 54px;
+        left: 0px;
+    }
+}
