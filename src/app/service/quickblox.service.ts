@@ -18,6 +18,8 @@ export class QuickbloxService {
 
     userData = this.ahtuService.userObj;
 
+    // fnCallbackTest: Function;
+
     credentials = {
         appId: 60785,
         authKey: 'NEX3fqJguxPXe7q',
@@ -36,24 +38,10 @@ export class QuickbloxService {
 
     public socket: WebSocket = null;
 
-    constructor( public ahtuService: AuthService , public service: ClientService ) { }
+    constructor( public ahtuService: AuthService , public service: ClientService ) { 
 
-
-    sendMsg() {
-        console.log( 'sending message ...' );
-
-        const msg = {
-            type: 'chat',
-            body: this.inputMsg,
-            extension: {
-                save_to_history: 1
-            }
-        };
-
-        QB.chat.send( 30789373, msg );
-
-        this.getDialogs();
     }
+
 
     initConnection() {
         console.log( 'init connection ...' );
@@ -63,8 +51,13 @@ export class QuickbloxService {
         // Incoming Message Listener
         QB.chat.onMessageListener = function( userId, msg ) {
             console.log( 'message from user: ' + userId, msg );
+            fnCallbackTest(msg);
         };
 
+        const fnCallbackTest = function(msg) {
+            console.log('asldkfjakl;sdfuadsf');
+            return msg;
+        }
         // Incoming Subscription Listener
         QB.chat.onSubscribeListener = function( userId ) {
             console.log( 'subscription request from user: ' + userId );
@@ -127,6 +120,9 @@ export class QuickbloxService {
                     this.connected = true;
                     //                    this.clientService.getRoster();
                 }
+                QB.chat.muc.join('60785_599d781ba0eb474ccf844a0e@muc.chat.quickblox.com', (resultStanza) => {
+                    console.log('join!');
+                })
             } );
         }
     }

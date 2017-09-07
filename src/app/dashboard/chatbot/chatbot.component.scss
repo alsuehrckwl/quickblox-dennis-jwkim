@@ -46,21 +46,24 @@
                     margin-bottom: 20px;
                     transition: all 0.5s linear;
                     opacity: 0;
-                    .left {
-                        .avatar {
-                            background-color: #f5886e;
-                            float: left;
-                        }
-                        .text_wrapper {
-                            background-color: #ffe6cb;
-                            margin-left: 20px;
-                            &::after, &::before {
-                                right: 100%;
-                                border-right-color: #ffe6cb;
+                    &.left {
+                        &.appeared {
+                            opacity: 1;
+                            .avatar {
+                                background-color: #f5886e;
+                                float: left;
                             }
-                        }
-                        .text {
-                        color: #c48843;
+                            .text_wrapper {
+                                background-color: #ffe6cb;
+                                margin-left: 20px;
+                                &::after, &::before {
+                                    right: 100%;
+                                    border-right-color: #ffe6cb;
+                                }
+                                .text {
+                                    color: #c48843;
+                                }
+                            }
                         }
                     }
                     .right {
@@ -81,9 +84,6 @@
                             color: #45829b;
                         }
                         
-                    }
-                    .appeared {
-                        opacity: 1;
                     }
                     .avatar {
                         width: 60px;
