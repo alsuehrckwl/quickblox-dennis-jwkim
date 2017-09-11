@@ -15,6 +15,7 @@ declare var StereoAudioRecorder: any;
 export class QuickbloxService {
 
     inputMsg = '';
+    msgArray: string[] = [];
 
     userData = this.ahtuService.userObj;
 
@@ -38,26 +39,15 @@ export class QuickbloxService {
 
     public socket: WebSocket = null;
 
-    constructor( public ahtuService: AuthService , public service: ClientService ) { 
+    constructor( public ahtuService: AuthService , public service: ClientService ) {
 
     }
-
 
     initConnection() {
         console.log( 'init connection ...' );
 
         QB.init( this.credentials.appId, this.credentials.authKey, this.credentials.authSecret );
 
-        // Incoming Message Listener
-        QB.chat.onMessageListener = function( userId, msg ) {
-            console.log( 'message from user: ' + userId, msg );
-            fnCallbackTest(msg);
-        };
-
-        const fnCallbackTest = function(msg) {
-            console.log('asldkfjakl;sdfuadsf');
-            return msg;
-        }
         // Incoming Subscription Listener
         QB.chat.onSubscribeListener = function( userId ) {
             console.log( 'subscription request from user: ' + userId );
@@ -69,6 +59,9 @@ export class QuickbloxService {
         };
 
         // ####### CALL LISTENER ########
+        QB.chat.onMessageListener = function( userId, msg ) {
+            console.log( 'message from user: ' + userId, msg );
+        };
 
         // Incoming Call Request Listener
         QB.webrtc.onCallListener = ( session, extension ) => {
