@@ -1,5 +1,8 @@
+$color-g: #83D3C7;
+
 .chatbot-flexbox  {
     display: flex;
+    padding: 20px;
     .chatbot-client {
         flex-grow: 1;
         margin-right: 10rem;
@@ -10,7 +13,7 @@
                 h1 {
                     float: left;
                     font-size: 24px;
-                    font-weight: 200;
+                    font-weight: 400;
                     margin-bottom: 1.5rem;
                 }
                 .info-icon {
@@ -18,7 +21,12 @@
                 }
             }
             .call-button {
-
+                .btn-call {
+                    background-color: transparent;
+                    border: 1px solid $color-g;
+                    color: $color-g;
+                    font-size: 0.65rem;
+                }
             }
         }
         .chatbot {
@@ -228,7 +236,7 @@
                         -webkit-box-flex: 1 !important;
                                     flex: auto !important;
                         font-size: 10px;
-                        color: #83D3C7;
+                        color: $color-g;
                         padding: 0.3rem 0.5rem;
                         border: 0px;
                         border-radius: 0px 0px 8px 8px;
