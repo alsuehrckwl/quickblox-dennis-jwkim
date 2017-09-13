@@ -20,14 +20,16 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-      // this.subscription = this.service.getRoster().subscribe( roster => {
-      //     const keys = Object.keys( roster['roster'] );
+    console.log('sidebar onInit');
+      this.subscription = this.service.getRoster().subscribe( roster => {
+        console.log('subcription! ... ');
+          const keys = Object.keys( roster['roster'] );
 
-      //     for ( let i = 0; i < keys.length; i++ ) {
-      //         this.clients.push( new Client( keys[i] ) );
-      //         console.log( roster['roster'][keys[i]] );
-      //     }
-      // } );
+          for ( let i = 0; i < keys.length; i++ ) {
+              this.clients.push( new Client( keys[i] ) );
+              console.log( roster['roster'][keys[i]] );
+          }
+      } );
   }
 
   // ngOnDestroy() {
